@@ -1,7 +1,7 @@
-package com.java.OrderProductService.service;
+package com.java.orderProductService.service;
 
-import com.java.OrderProductService.model.Product;
-import com.java.OrderProductService.repository.ProductRepository;
+import com.java.orderProductService.model.Product;
+import com.java.orderProductService.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service

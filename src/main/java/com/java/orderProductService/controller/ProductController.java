@@ -1,7 +1,7 @@
-package com.java.OrderProductService.controller;
+package com.java.orderProductService.controller;
 
-import com.java.OrderProductService.model.Product;
-import com.java.OrderProductService.service.ProductService;
+import com.java.orderProductService.model.Product;
+import com.java.orderProductService.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

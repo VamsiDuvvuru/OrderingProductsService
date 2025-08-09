@@ -1,4 +1,4 @@
-package com.java.OrderProductService.model;
+package com.java.orderProductService.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

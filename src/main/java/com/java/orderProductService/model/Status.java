@@ -1,4 +1,4 @@
-package com.java.OrderProductService.model;
+package com.java.orderProductService.model;
 
 public enum Status {
     PENDING,

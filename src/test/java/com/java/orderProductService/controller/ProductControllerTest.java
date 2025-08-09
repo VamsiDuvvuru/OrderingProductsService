@@ -1,6 +1,6 @@
-package com.java.OrderProductService.controller;
+package com.java.orderProductService.controller;
 
-import com.java.OrderProductService.OrderProductServiceApplication;
+import com.java.orderProductService.OrderProductServiceApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
