@@ -1,6 +1,3 @@
-Here is a clearer and more structured version of your `README.md` file. It uses Markdown formatting for better readability and organization.
-
-```markdown
 # Order Product Service
 
 A Spring Boot application for managing product orders.
@@ -62,5 +59,37 @@ mvn test
 - Use the provided examples for testing API endpoints.
 
 ---
-```
-This version uses headings, code blocks, and lists for clarity and ease of use.
+
+## Additional Information
+1.End Points for product:
+   - **POST** `/products`: Create a new product.
+     sample curl:
+     curl -X POST \
+     'http://localhost:9090/ProductOrderService/products' \
+     -H 'accept: */*' \
+     -H 'Content-Type: application/json' \
+     -d '{
+     "id": 0,
+     "name": "string",
+     "price": 0
+     }'
+
+2. End Points for order:
+   - **POST** `/orders`: Create a new order.
+   sample curl:
+     curl -X 'POST' \
+     'http://localhost:9090/ProductOrderService/orders' \
+     -H 'accept: */*' \
+     -H 'Content-Type: application/json' \
+     -d '{
+     "id": 0,
+     "productId": 0,
+     "status": "PENDING"
+     }'
+
+3. End Points for order status:
+   - **GET** `/orders/{orderId}`: Get the status of an order by its ID.
+   sample curl:
+     curl -X 'GET' \
+     'http://localhost:9090/ProductOrderService/orders/1' \
+     -H 'accept: */*'
