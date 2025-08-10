@@ -7,9 +7,12 @@ import com.java.orderProductService.model.Product;
 import com.java.orderProductService.model.Status;
 import com.java.orderProductService.repository.OrderRepository;
 import com.java.orderProductService.repository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 
+@Slf4j
 @Service
 public class OrderServiceImpl implements OrderService{
 
@@ -37,31 +40,35 @@ public class OrderServiceImpl implements OrderService{
     public void putOrder(Order order) {
         checkProductAvailablity(order.getProductId());
         order.setStatus(Status.PENDING);
-        orderRepository.saveAndFlush(order);
-        productOrderAsyncService.performAsyncTask();
+        //save the order status as pending
+        orderRepository.save(order);
+        //run the async job
+        productOrderAsyncService.performAsyncTask(order.getId());
     }
 
     /*
-    * fetch the ordre by order id
-    * this method returns the status of the order*/
+    * fetch the order by order id
+    * this method returns the status of the order
+    */
     @Override
     public String getOrderStatusById(long orderId) {
-        Order order = orderRepository.getReferenceById(orderId);
-        if(order == null){
-            throw new OrderNotFoundException("the order is not found for order id {}" ,orderId);
+        Optional<Order> order = orderRepository.findById(orderId);
+        if(order.isEmpty()){
+            log.warn("the given order is not available with order id{}",orderId);
+            throw new OrderNotFoundException(String.format("the order is not found for order id {}" ,orderId));
         }
-        return order.getStatus().toString();
+        return order.get().getStatus().toString();
     }
 
     /*
         first check if the ordered product is available
         if not please throw product not available exception
      */
-    private boolean checkProductAvailablity(long productId){
-        Product product = productRepository.getReferenceById(productId);
-        if(product == null){
-            throw new ProductNotFoundException("product with id {} is not available in the store" , productId);
+    private void checkProductAvailablity(long productId){
+        Optional<Product> product = productRepository.findById(productId);
+        if(product.isEmpty()){
+            log.warn("product id is not available please change product id {}",productId);
+            throw new ProductNotFoundException(String.format("product  is not available in the store with productid %d" , productId));
         }
-        return product != null;
     }
 }
