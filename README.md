@@ -64,6 +64,7 @@ mvn test
 1.End Points for product:
    - **POST** `/products`: Create a new product.
      sample curl:
+   ```sh
      curl -X POST \
      'http://localhost:9090/ProductOrderService/products' \
      -H 'accept: */*' \
@@ -73,10 +74,12 @@ mvn test
      "name": "string",
      "price": 0
      }'
+    ```
 
 2. End Points for order:
    - **POST** `/orders`: Create a new order.
    sample curl:
+   ```sh
      curl -X 'POST' \
      'http://localhost:9090/ProductOrderService/orders' \
      -H 'accept: */*' \
@@ -86,10 +89,12 @@ mvn test
      "productId": 0,
      "status": "PENDING"
      }'
-
+   ```
 3. End Points for order status:
    - **GET** `/orders/{orderId}`: Get the status of an order by its ID.
    sample curl:
+   ```sh
      curl -X 'GET' \
      'http://localhost:9090/ProductOrderService/orders/1' \
      -H 'accept: */*'
+   ```
