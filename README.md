@@ -74,7 +74,7 @@ mvn test
      "name": "string",
      "price": 0
      }'
-    ```
+   ```
 
 2. End Points for order:
    - **POST** `/orders`: Create a new order.
