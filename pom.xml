@@ -12,7 +12,7 @@
 	<artifactId>OrderProductService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OrderProductService</name>
-	<description>This project is created </description>
+	<description>A Spring Boot application for managing product orders.</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
